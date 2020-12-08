@@ -43,8 +43,11 @@ def main():
     'Content-Type':'application/json'
     }
     try:
-        if req.get(r'https://graph.microsoft.com/v1.0/me/drive/root',headers=headers).status_code == 200:
+        res = req.get(r'https://graph.microsoft.com/v1.0/me/drive/root',headers=headers)
+        if res.status_code == 200:
             num1+=1
+            print("GET /v1.0/me/drive/root")
+            print(res.text)
             print("1调用成功"+str(num1)+'次')
         if req.get(r'https://graph.microsoft.com/v1.0/me/drive',headers=headers).status_code == 200:
             num1+=1
